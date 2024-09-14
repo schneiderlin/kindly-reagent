@@ -85,7 +85,6 @@ It uses the `katex` object in the global JS scope, so Clay also includes a :deps
 
 I just assume the library is in the global JS scope. But there is another problem.
 > React DOM (the renderer for React on web) uses createElement calls to render JSX into DOM elements.
-
 createElement uses the innerHTML DOM API to finally add these to the DOM (see code in React source). innerHTML does not execute script tags added as a security consideration. And this is the reason why in turn rendering script tags in React doesn't work as expected.
 https://stackoverflow.com/a/64815699/8388083
 
