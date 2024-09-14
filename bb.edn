@@ -1,0 +1,5 @@
+{:deps  {org.babashka/http-server {:mvn/version "0.1.12"}}
+ :tasks {serve     {:doc      "Serve static assets"
+                    :requires ([babashka.http-server :as server])
+                    :task     (server/exec (merge {:port 1337
+                                                   :dir  "demo"}))}}}
