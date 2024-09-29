@@ -201,5 +201,20 @@
    [:div {:style {:height "2px", :width "100%", :background-color "grey"}}]
    [:div nil]])
 
+(defn body []
+  [:body  {:style {:margin "auto"}
+           :data-spy "scroll"
+           :data-target "#toc"}
+   [:div.container
+    [:div.row
+     [:div {:class "col-sm-12"}
+      [:div
+       [:f> my-component]]]]]
+   #_[:script {:type "text/javascript"}
+      (-> "highlight/highlight.min.js"
+          io/resource
+          slurp)]
+   #_[:script {:type "text/javascript"}
+      "hljs.highlightAll();"]])
 
-(rdom/render [:f> my-component] (.getElementById js/document "app"))
+(rdom/render [body] (.getElementById js/document "app"))

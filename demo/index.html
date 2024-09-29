@@ -47,11 +47,29 @@
         <!-- md-default -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+
+        <!-- hljs -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" type="application/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/clojure.min.js" type="application/javascript"></script>
+        
+
+        <link rel="stylesheet" href="styles/code.css">
+        <link rel="stylesheet" href="styles/loader.css">
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/md-main.css">
+        <link rel="stylesheet" href="styles/table.css">
+        <link rel="stylesheet" href="styles/bootswatch-cosmo-bootstrap.min.css">
+        <link rel="stylesheet" href="styles/bootstrap-generated-by-quarto.min.css">
     </head>
 
     <body>
         <script src="scittle.cljs" type="application/x-scittle"></script>
         <div id="app"></div>
+
+        <!-- hljs -->
+        <script>
+            hljs.highlightAll();
+        </script>
     </body>
 </html>
 

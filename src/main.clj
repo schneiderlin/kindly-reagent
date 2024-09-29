@@ -11,9 +11,10 @@
 
 (defn handle-script [hiccup]
   (let [[tag attrs children] (normalize-element hiccup)
-        [non-script-nodes script-nodes] (split-with #(or (not (vector? %))
-                                                         (not= (get-tag %) "script"))
-                                                    children)]
+        {non-script-nodes true
+         script-nodes false} (split-with #(or (not (vector? %))
+                                               (not= (get-tag %) "script"))
+                                          children)]
     (if (empty? script-nodes)
       ;; no script tag in children, do nothing
       hiccup
@@ -24,6 +25,14 @@
        (if (empty? non-script-nodes)
          [tag attrs]
          [tag attrs (vec non-script-nodes)])])))
+
+(comment
+  
+  (split-with #(= :a %) [:a :b :a])
+
+  (group-by #(= :a %) [:a :b :a])
+  :rcf)
+
 
 (defn handle-code
   "all the code tag will 
@@ -66,7 +75,8 @@
 
 (comment
   ;; -------- clay ---------------
-  (def spec {:source-path "notebooks/test1.clj"})
+  #_(def spec {:source-path "notebooks/test1.clj"})
+  (def spec {:source-path "notebooks/snitch_demo.clj"})
   (def single-ns-specs (:single-ns-specs (extract-specs (config/config) spec)))
   (def spec1 (first single-ns-specs))
   (def result (notebook/items-and-test-forms spec1))
